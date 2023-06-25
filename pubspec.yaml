@@ -40,10 +40,18 @@ dependencies:
   carousel_slider: ^4.2.1
   intl: ^0.18.1
   google_fonts: ^5.1.0
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "images/app_icon.webp"
+  adaptive_icon_foreground: "images/app_icon.webp"
+  adaptive_icon_background: "#000000"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
