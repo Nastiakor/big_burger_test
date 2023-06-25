@@ -3,33 +3,36 @@ class BurgerMenu {
   final String title;
   final String? description;
   final String? thumbnail;
-  final int price;
+  final int priceCents;
 
   const BurgerMenu(
       {required this.ref,
       required this.title,
       this.description,
       this.thumbnail,
-      required this.price});
+      required this.priceCents});
 
   factory BurgerMenu.fromJson(Map<String, dynamic> json) {
-    final int price = json['price'];
-    int convertedPrice = price;
-
-    if (price == 92820) {
-      convertedPrice = price ~/ 10000;
-    } else if (price > 10000) {
-      convertedPrice = price ~/ 1000;
-    } else {
-      convertedPrice = price ~/ 100;
-    }
+    int priceCents = json['price'] as int;
 
     return BurgerMenu(
-      ref: json['ref'],
-      title: json['title'],
-      description: json['description'],
-      thumbnail: json['thumbnail'],
-      price: convertedPrice,
+      ref: json['ref'] as String,
+      title: json['title'] as String,
+      description: json['description'] as String?,
+      thumbnail: json['thumbnail'] as String?,
+      priceCents: priceCents,
     );
+  }
+
+  double get priceInEuros {
+    double correctedPriceCents = priceCents.toDouble();
+    if (priceCents == 92820) {
+      correctedPriceCents = correctedPriceCents / 10000.0;
+    } else if (priceCents > 10000) {
+      correctedPriceCents = correctedPriceCents / 1000.0;
+    } else {
+      correctedPriceCents = correctedPriceCents / 100.0;
+    }
+    return correctedPriceCents;
   }
 }

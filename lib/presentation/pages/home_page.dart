@@ -3,7 +3,6 @@ import 'package:useradgents_exercise/data/api/service/burger_api_service.dart';
 import 'package:useradgents_exercise/domain/entities/burger_menu.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:useradgents_exercise/presentation/pages/burger_detail_page.dart';
-import 'package:useradgents_exercise/main.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,12 +13,12 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   late Future<List<BurgerMenu>> futureBurgerMenu;
-  final burgerApiService = BurgerApiService();
+  final BurgerApiService apiService = BurgerApiService();
 
   @override
   void initState() {
     super.initState();
-    futureBurgerMenu = burgerApiService.fetchBurgerMenu();
+    futureBurgerMenu = apiService.fetchBurgerMenu();
   }
 
   @override
@@ -112,7 +111,7 @@ class HomePageState extends State<HomePage> {
                               Align(
                                 alignment: Alignment.center,
                                 child: Text(
-                                  itemPrice.format(burgerMenu.price),
+                                  '${burgerMenu.priceInEuros.toStringAsFixed(2)} €',
                                   style: const TextStyle(color: Colors.white),
                                 ),
                               ),
@@ -125,8 +124,22 @@ class HomePageState extends State<HomePage> {
                 },
               );
             } else if (snapshot.hasError) {
-              return const Center(
-                child: Text("Failed to load data"),
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    const Text("Failed to load data"),
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          futureBurgerMenu = apiService.fetchBurgerMenu();
+                        });
+                      },
+                      child: const Text('Retry'),
+                    ),
+                  ],
+                ),
               );
             }
             return const Center(

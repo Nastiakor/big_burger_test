@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:useradgents_exercise/domain/entities/burger_menu.dart';
-import 'package:useradgents_exercise/main.dart';
 
 class BurgerDetailPage extends StatelessWidget {
   final BurgerMenu burgerMenu;
@@ -60,7 +59,7 @@ class BurgerDetailPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 30),
                 Text(
-                  'Price: ${itemPrice.format(burgerMenu.price)}',
+                  '${burgerMenu.priceInEuros.toStringAsFixed(2)} €',
                   style: const TextStyle(color: Colors.white),
                 ),
               ],
