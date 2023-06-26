@@ -1,5 +1,7 @@
 # Mobile Technical Test: Big Burger
 
+<img src="https://github.com/Nastiakor/big_burger_test/assets/114946987/550a1328-44f7-4f7b-90e6-a7d45c702846" width="250"> 
+
 ## Scenario
 _Big Burger_, a new fast food business, is coming to Paris and would like to launch a mobile app. They want their customers to (1) consult the menu of their restaurants, (2) compose a cart, and (3) pay online. The customers will then come to the restaurant to take out their lunch without waiting.
 
