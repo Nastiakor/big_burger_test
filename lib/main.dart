@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:useradgents_exercise/presentation/pages/home_page.dart';
+import 'package:useradgents_exercise/providers/cart_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider<CartProvider>(
+      create: (context) => CartProvider(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -27,7 +34,7 @@ class MyApp extends StatelessWidget {
           bodyLarge: GoogleFonts.poppins(
             color: Colors.white,
             fontWeight: FontWeight.bold,
-            fontSize: 35,
+            fontSize: 30,
           ),
           bodySmall: GoogleFonts.poppins(
             color: Colors.white,
