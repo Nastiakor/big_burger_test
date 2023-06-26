@@ -1,34 +1,62 @@
 # Mobile Technical Test: Big Burger
 
-<img src="https://github.com/Nastiakor/big_burger_test/assets/114946987/550a1328-44f7-4f7b-90e6-a7d45c702846" width="250"> 
+<img src="https://github.com/Nastiakor/big_burger_test/assets/114946987/550a1328-44f7-4f7b-90e6-a7d45c702846" width="200"> 
 
-## Scenario
-_Big Burger_, a new fast food business, is coming to Paris and would like to launch a mobile app. They want their customers to (1) consult the menu of their restaurants, (2) compose a cart, and (3) pay online. The customers will then come to the restaurant to take out their lunch without waiting.
+This repository contains a draft of a Flutter mobile application for Big Burger, a new fast-food business. This application allows users to consult the menu of Big Burger, compose a cart, and view the total amount.
 
-We are asking you to develop a first draft of the mobile app with the following two functionalities:
+## Features
 
-1. Fetch the menu from an API, and display it as a product list with pictures and prices;
+1. Fetch and display the menu from an API.
+2. Add products to the cart with arbitrary quantities.
+3. Display the total amount of the items in the cart.
 
-2. Allow users to compose a cart with arbitrary quantities of each product, and display the total amount.
+## Application Structure
 
-**No wireframe or mockup is provided.** It's up to you to design these interfaces the most logical and practical way you can imagine.
+The application is structured according to Clean Architecture principles and makes use of the Provider pattern for state management. The application has Domain, Data, Provider and Presentation layers:
 
-## Resources
+### Domain Layer
 
-The API is available by making a `GET` request to `https://uad.io/bigburger`
+- domain/entities/burger_menu.dart: This file contains the BurgerMenu entity which represents each burger item.
+- domain/entities/cart_item.dart: This file contains the CartItem entity which represents each item in the cart.
 
-**It is intended behaviour** that the API takes a random time to return, and will randomly fail. You are expected to take this into account by providing a way to refresh the list or retry the request whenever it fails.
+### Data Layer
 
-**It is also intended behaviour** that the prices are returned in euro cents, which is common practice when dealing with monetary amounts. You are expected to perform calculations, conversions and proper formatting for display on-device according to the user‚Äôs settings.
+- data/burger_api_service.dart: This file contains the BurgerApiService class, which is responsible for fetching the burger menu from an API. It makes a GET request to the given URL and parses the JSON response to a list of BurgerMenu objects.
 
-## Data model
+### Provider Layer
 
-The API call, when it succeeds, will return an array of Burgers. Here is the data model of a Burger object:
+- providers/cart_provider.dart: This file contains the CartProvider class which is responsible for managing the state of the cart. It includes methods to add and remove items from the cart and calculate the total price.
 
-Property name | Type | Optional | Notes
-`ref` | `String` | Mandatory, unique | The product identifier
-`title` | `String` | Mandatory | The name of the product
-`description` | `String?` | Optional | A long-form description of the product
-`thumbnail` | `URL?` | Optional | The absolute URL to an image of the product, to be used in the list. It may happen that this URL does not respond.
-`price` | `Integer` | Mandatory | The price of the product, in Euro cents
+### Presentation Layer
+
+- presentation/pages/cart_page.dart: This page displays the items added to the cart and the total amount.
+- presentation/pages/burger_detail_page.dart: This page displays the details of a selected burger. Users can add the item to the cart from this page.
+
+## How it Works
+
+The application fetches the menu items from an API and displays them in a list. Each menu item has an image, title, and price.
+When the user taps on a menu item, they are taken to a detail page where they can view more information about the item.
+On the detail page, the user can add the item to the cart.
+Users can navigate to the cart page to see all the items they've added to their cart.
+In the cart, the total amount is calculated and displayed.
+
+## Additional information
+
+### Customized launcher icon 
+
+<img src="https://github.com/Nastiakor/big_burger_test/assets/114946987/16616038-32ae-4a65-9aac-d19a0f51bd58" width="200"> 
+
+### Defaul image when an image fails to load 
+
+<img src="https://github.com/Nastiakor/big_burger_test/assets/114946987/b786838b-4550-43a5-a42f-c08ef547a9d7" width="200"> 
+
+
+
+
+
+
+
+
+
+
 
