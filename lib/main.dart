@@ -14,12 +14,24 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: const Color(0xFF000000),
+        scaffoldBackgroundColor: Color(0xFF000000),
+        appBarTheme: AppBarTheme(
+          color: Color(0xFF000000),
+          titleTextStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+        ),
         textTheme: TextTheme(
+          bodyMedium: GoogleFonts.poppins(
+            color: Colors.white,
+            fontSize: 20,
+          ),
           bodyLarge: GoogleFonts.poppins(
             color: Colors.white,
             fontWeight: FontWeight.bold,
-            fontSize: 15,
+            fontSize: 35,
+          ),
+          bodySmall: GoogleFonts.poppins(
+            color: Colors.white,
+            fontSize: 13,
           ),
         ),
       ),

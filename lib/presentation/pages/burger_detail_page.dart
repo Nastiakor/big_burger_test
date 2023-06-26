@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:useradgents_exercise/domain/entities/burger_menu.dart';
 
 class BurgerDetailPage extends StatelessWidget {
@@ -11,19 +10,14 @@ class BurgerDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF000000),
-      ),
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        color: const Color(0xFF000000),
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: SingleChildScrollView(
+      appBar: AppBar(),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
                   width: 300,
@@ -35,32 +29,29 @@ class BurgerDetailPage extends StatelessWidget {
                     },
                   ),
                 ),
-                const SizedBox(height: 100),
+                const SizedBox(height: 60),
                 Text(
                   burgerMenu.title,
-                  style: GoogleFonts.poppins(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 35),
+                  style: Theme.of(context).textTheme.bodyLarge,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
                 ),
                 const SizedBox(height: 30),
                 Text(
                   burgerMenu.description ?? '',
-                  style: const TextStyle(color: Colors.white, fontSize: 20),
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 const SizedBox(height: 30),
                 Text(
                   'Ref: ${burgerMenu.ref}',
-                  style: const TextStyle(color: Colors.white),
+                  style: Theme.of(context).textTheme.bodyMedium,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 3,
                 ),
                 const SizedBox(height: 30),
                 Text(
                   '${burgerMenu.priceInEuros.toStringAsFixed(2)} €',
-                  style: const TextStyle(color: Colors.white),
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ],
             ),
