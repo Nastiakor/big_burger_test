@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:useradgents_exercise/domain/entities/burger_menu.dart';
+import 'package:useradgents_exercise/domain/entities/menu_item.dart';
 import 'package:useradgents_exercise/providers/cart_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:useradgents_exercise/presentation/pages/cart_page.dart';
 
 class BurgerDetailPage extends StatefulWidget {
-  final BurgerMenu burgerMenu;
+  final MenuItem menuItem;
 
-  const BurgerDetailPage({Key? key, required this.burgerMenu})
+  const BurgerDetailPage({Key? key, required this.menuItem})
       : super(key: key);
 
   @override
@@ -28,12 +27,7 @@ class _BurgerDetailPageState extends State<BurgerDetailPage> {
               color: Colors.white,
             ),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => CartPage(),
-                ),
-              );
+              Navigator.pushNamed(context, '/cart');
             },
           ),
         ],
@@ -48,7 +42,7 @@ class _BurgerDetailPageState extends State<BurgerDetailPage> {
               SizedBox(
                 width: 250,
                 child: Image.network(
-                  widget.burgerMenu.thumbnail ?? '',
+                  widget.menuItem.thumbnail ?? '',
                   errorBuilder: (BuildContext context, Object exception,
                       StackTrace? stackTrace) {
                     return Image.asset('images/image_na.png');
@@ -57,7 +51,7 @@ class _BurgerDetailPageState extends State<BurgerDetailPage> {
               ),
               const SizedBox(height: 25),
               Text(
-                widget.burgerMenu.title,
+                widget.menuItem.title,
                 style: Theme.of(context).textTheme.bodyLarge,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
@@ -65,13 +59,13 @@ class _BurgerDetailPageState extends State<BurgerDetailPage> {
               ),
               const SizedBox(height: 10),
               Text(
-                widget.burgerMenu.description ?? '',
+                widget.menuItem.description ?? '',
                 style: Theme.of(context).textTheme.bodyMedium,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 10),
               Text(
-                'Ref: ${widget.burgerMenu.ref}',
+                'Ref: ${widget.menuItem.ref}',
                 style: Theme.of(context).textTheme.bodyMedium,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 3,
@@ -79,7 +73,7 @@ class _BurgerDetailPageState extends State<BurgerDetailPage> {
               ),
               const SizedBox(height: 10),
               Text(
-                '${widget.burgerMenu.priceInEuros.toStringAsFixed(2)} €',
+                '${widget.menuItem.priceInEuros.toStringAsFixed(2)} €',
                 style: Theme.of(context).textTheme.bodyMedium,
                 textAlign: TextAlign.center,
               ),
@@ -116,7 +110,7 @@ class _BurgerDetailPageState extends State<BurgerDetailPage> {
                 style: Theme.of(context).elevatedButtonTheme.style,
                 onPressed: () {
                   Provider.of<CartProvider>(context, listen: false)
-                      .addItem(widget.burgerMenu);
+                      .addItem(widget.menuItem);
                 },
                 child: Text(
                   'Add to Cart',
@@ -125,7 +119,7 @@ class _BurgerDetailPageState extends State<BurgerDetailPage> {
               ),
               const SizedBox(height: 10),
               Text(
-                  "Total: ${getTotalPrice(widget.burgerMenu.priceInEuros, quantity)} €"),
+                  "Total: ${getTotalPrice(widget.menuItem.priceInEuros, quantity).toStringAsFixed(2)} €"),
             ],
           ),
         ),
@@ -134,9 +128,7 @@ class _BurgerDetailPageState extends State<BurgerDetailPage> {
   }
 }
 
-double getTotalPrice(itemsPrice, itemsQuantity) {
+double getTotalPrice(double itemsPrice, int itemsQuantity) {
   double result = itemsPrice * itemsQuantity;
-  String stringParse = result.toStringAsFixed(2);
-  double totalPrice = double.parse(stringParse);
-  return totalPrice;
+  return double.parse(result.toStringAsFixed(2));
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:useradgents_exercise/data/api/service/burger_api_service.dart';
-import 'package:useradgents_exercise/domain/entities/burger_menu.dart';
-import 'package:useradgents_exercise/presentation/pages/burger_detail_page.dart';
+import 'package:useradgents_exercise/domain/entities/menu_item.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,7 +10,7 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  late Future<List<BurgerMenu>> futureBurgerMenu;
+  late Future<List<MenuItem>> futureBurgerMenu;
   final BurgerApiService apiService = BurgerApiService();
 
   @override
@@ -28,7 +27,7 @@ class HomePageState extends State<HomePage> {
           'Your favourite burger',
         ),
       ),
-      body: FutureBuilder<List<BurgerMenu>>(
+      body: FutureBuilder<List<MenuItem>>(
         future: futureBurgerMenu,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
@@ -42,13 +41,9 @@ class HomePageState extends State<HomePage> {
                 final burgerMenu = burgerMenus[index];
                 return InkWell(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => BurgerDetailPage(
-                          burgerMenu: burgerMenu,
-                        ),
-                      ),
+                    Navigator.of(context).pushNamed(
+                      '/product-details',
+                      arguments: burgerMenu,
                     );
                   },
                   child: Padding(

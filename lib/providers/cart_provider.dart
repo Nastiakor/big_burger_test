@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:useradgents_exercise/domain/entities/burger_menu.dart';
+import 'package:useradgents_exercise/domain/entities/menu_item.dart';
 import 'package:useradgents_exercise/domain/entities/cart_item.dart';
 
 class CartProvider with ChangeNotifier {
@@ -7,10 +7,9 @@ class CartProvider with ChangeNotifier {
 
   List<CartItem> get items => _items;
 
-  void addItem(BurgerMenu burgerMenu) {
-    var item = _items.firstWhere(
-        (item) => item.burgerMenu.ref == burgerMenu.ref,
-        orElse: () => CartItem(burgerMenu: burgerMenu));
+  void addItem(MenuItem burgerMenu) {
+    var item = _items.firstWhere((item) => item.menuItem.ref == burgerMenu.ref,
+        orElse: () => CartItem(menuItem: burgerMenu));
     if (!_items.contains(item)) {
       _items.add(item);
     }
@@ -19,12 +18,12 @@ class CartProvider with ChangeNotifier {
   }
 
   void removeItem(String ref) {
-    _items.removeWhere((item) => item.burgerMenu.ref == ref);
+    _items.removeWhere((item) => item.menuItem.ref == ref);
     notifyListeners();
   }
 
   double get totalPrice {
     return _items.fold(
-        0, (sum, item) => sum + (item.quantity * item.burgerMenu.priceInEuros));
+        0, (sum, item) => sum + (item.quantity * item.menuItem.priceInEuros));
   }
 }

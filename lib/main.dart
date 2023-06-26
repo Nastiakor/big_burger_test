@@ -3,6 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:useradgents_exercise/presentation/pages/home_page.dart';
 import 'package:useradgents_exercise/providers/cart_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:useradgents_exercise/presentation/pages/burger_detail_page.dart';
+import 'package:useradgents_exercise/presentation/pages/cart_page.dart';
+import 'package:useradgents_exercise/domain/entities/menu_item.dart';
 
 void main() {
   runApp(
@@ -56,7 +59,12 @@ class MyApp extends StatelessWidget {
           color: Colors.white,
         ),
       ),
-      home: const HomePage(),
+      routes: {
+        '/': (context) => HomePage(),
+        '/product-details': (context) => BurgerDetailPage(
+            menuItem: ModalRoute.of(context)!.settings.arguments as MenuItem),
+        '/cart': (context) => CartPage(),
+      },
     );
   }
 }

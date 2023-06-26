@@ -24,20 +24,22 @@ class CartPage extends StatelessWidget {
               itemBuilder: (context, index) {
                 return ListTile(
                   leading: Image.network(
-                      cartItems[index].burgerMenu.thumbnail ?? ''),
-                  title: Text(cartItems[index].burgerMenu.title),
+                      cartItems[index].menuItem.thumbnail ?? ''),
+                  title: Text(cartItems[index].menuItem.title),
                   subtitle: Text(
-                      '${cartItems[index].quantity} x ${cartItems[index].burgerMenu.priceInEuros.toStringAsFixed(2)} €'),
+                      '${cartItems[index].quantity} x ${cartItems[index].menuItem.priceInEuros.toStringAsFixed(2)} €'),
                   trailing: Text(
-                      'Subtotal: ${(cartItems[index].quantity * cartItems[index].burgerMenu.priceInEuros).toStringAsFixed(2)} €'),
+                      'Subtotal: ${(cartItems[index].quantity * cartItems[index].menuItem.priceInEuros).toStringAsFixed(2)} €'),
                 );
               },
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child:
-                Text('Total: $totalAmount €', style: TextStyle(fontSize: 20)),
+            child: Text(
+              'Total: $totalAmount €',
+              style: TextStyle(fontSize: 20),
+            ),
           ),
         ],
       ),

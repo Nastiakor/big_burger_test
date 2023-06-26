@@ -1,8 +1,8 @@
-import 'package:useradgents_exercise/domain/entities/burger_menu.dart';
+import 'package:useradgents_exercise/domain/entities/menu_item.dart';
 
 class CartItem {
-  final BurgerMenu burgerMenu;
+  final MenuItem menuItem;
   int quantity;
 
-  CartItem({required this.burgerMenu, this.quantity = 1});
+  CartItem({required this.menuItem, this.quantity = 1});
 }
