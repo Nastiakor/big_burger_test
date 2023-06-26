@@ -82,7 +82,7 @@ class HomePageState extends State<HomePage> {
                             },
                             errorBuilder: (context, error, stackTrace) {
                               return Image.asset(
-                                  'images/big_salad.jpg'); // replacement image if error
+                                  'images/image_na.png'); // replacement image if error
                             },
                           ),
                         ),
@@ -91,7 +91,7 @@ class HomePageState extends State<HomePage> {
                           alignment: Alignment.center,
                           child: Text(
                             burgerMenu.title,
-                            style: Theme.of(context).textTheme.bodySmall,
+                            style: Theme.of(context).textTheme.labelMedium,
                           ),
                         ),
                         Column(

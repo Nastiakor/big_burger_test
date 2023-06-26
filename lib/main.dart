@@ -38,8 +38,22 @@ class MyApp extends StatelessWidget {
           ),
           bodySmall: GoogleFonts.poppins(
             color: Colors.white,
-            fontSize: 13,
+            fontSize: 15,
           ),
+          labelMedium: GoogleFonts.poppins(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 15,
+          ),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.amber,
+            textStyle: Theme.of(context).textTheme.bodyMedium,
+          ),
+        ),
+        iconTheme: IconThemeData(
+          color: Colors.white,
         ),
       ),
       home: const HomePage(),
