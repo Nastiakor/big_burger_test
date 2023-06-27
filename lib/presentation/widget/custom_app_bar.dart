@@ -33,12 +33,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     Navigator.pushNamed(context, '/');
                   },
           ),
+          SizedBox(width: 30),
           Expanded(
-            child: Center(
-              child: Text(
-                title ?? '',
-                textAlign: TextAlign.center,
-              ),
+            child: Text(
+              title ?? '',
+              textAlign: TextAlign.center,
             ),
           ),
         ],

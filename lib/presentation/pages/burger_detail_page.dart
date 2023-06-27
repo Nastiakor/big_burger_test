@@ -108,7 +108,6 @@ class _BurgerDetailPageState extends State<BurgerDetailPage> {
                 onPressed: () {
                   Provider.of<CartProvider>(context, listen: false)
                       .addItem(widget.menuItem, quantity);
-
                   // show a SnackBar
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(

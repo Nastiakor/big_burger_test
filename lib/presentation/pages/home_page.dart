@@ -23,7 +23,11 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Your Favourite Burger', showCartIcon: true, showImage: true, isOnHomePage: true),
+      appBar: CustomAppBar(
+          title: 'Big Burger',
+          showCartIcon: true,
+          showImage: true,
+          isOnHomePage: true),
       body: FutureBuilder<List<MenuItem>>(
         future: futureBurgerMenu,
         builder: (context, snapshot) {
@@ -117,7 +121,10 @@ class HomePageState extends State<HomePage> {
                         futureBurgerMenu = apiService.fetchBurgerMenu();
                       });
                     },
-                    child: const Text('Retry'),
+                    child: const Text(
+                      'Retry',
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
                   ),
                 ],
               ),

@@ -24,14 +24,14 @@ The application is structured according to Clean Architecture principles and mak
 
 ### Domain Layer
 
-- domain/entities/burger_menu.dart : This file contains the BurgerMenu entity which represents each burger item.
+- domain/entities/menu_item.dart : This file contains the BurgerMenu entity which represents each burger item.
 - domain/entities/cart_item.dart : This file contains the CartItem entity which represents each item in the cart.
 
 ### Data Layer
 
 - data/burger_api_service.dart : This file contains the BurgerApiService class, which is responsible for fetching the burger menu from an API. It makes a GET request to the given URL and parses the JSON response to a list of BurgerMenu objects.
 
-### Provider Layer
+### Providers Layer
 
 - providers/cart_provider.dart : This file contains the CartProvider class which is responsible for managing the state of the cart. It includes methods to add and remove items from the cart and calculate the total price.
 
@@ -39,6 +39,9 @@ The application is structured according to Clean Architecture principles and mak
 
 - presentation/pages/cart_page.dart : This page displays the items added to the cart and the total amount.
 - presentation/pages/burger_detail_page.dart : This page displays the details of a selected burger. Users can add the item to the cart from this page.
+- presentation/pages/home_page.dart
+- presentation/widget/cart_icon_button.dart
+- presentation/widget/custom_app_bar.dart
 
 ### Utils Layer
 
