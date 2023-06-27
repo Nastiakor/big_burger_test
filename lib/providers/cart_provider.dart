@@ -7,13 +7,13 @@ class CartProvider with ChangeNotifier {
 
   List<CartItem> get items => _items;
 
-  void addItem(MenuItem burgerMenu) {
+  void addItem(MenuItem burgerMenu, int quantity) {
     var item = _items.firstWhere((item) => item.menuItem.ref == burgerMenu.ref,
         orElse: () => CartItem(menuItem: burgerMenu));
     if (!_items.contains(item)) {
       _items.add(item);
     }
-    item.quantity += 1;
+    item.quantity += quantity;
     notifyListeners();
   }
 

@@ -23,13 +23,16 @@ class CartPage extends StatelessWidget {
               itemCount: cartItems.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  leading: Image.network(
-                      cartItems[index].menuItem.thumbnail ?? ''),
-                  title: Text(cartItems[index].menuItem.title),
+                  leading:
+                      Image.network(cartItems[index].menuItem.thumbnail ?? ''),
+                  title: Text(cartItems[index].menuItem.title,
+                      style: Theme.of(context).textTheme.bodyMedium),
                   subtitle: Text(
-                      '${cartItems[index].quantity} x ${cartItems[index].menuItem.priceInEuros.toStringAsFixed(2)} €'),
+                      '${cartItems[index].quantity} x ${cartItems[index].menuItem.priceInEuros.toStringAsFixed(2)} €',
+                      style: Theme.of(context).textTheme.labelMedium),
                   trailing: Text(
-                      'Subtotal: ${(cartItems[index].quantity * cartItems[index].menuItem.priceInEuros).toStringAsFixed(2)} €'),
+                      'Subtotal: ${(cartItems[index].quantity * cartItems[index].menuItem.priceInEuros).toStringAsFixed(2)} €',
+                      style: Theme.of(context).textTheme.labelMedium),
                 );
               },
             ),
@@ -37,7 +40,7 @@ class CartPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Text(
-              'Total: $totalAmount €',
+              'Total: ${totalAmount.toStringAsFixed(2)} €',
               style: TextStyle(fontSize: 20),
             ),
           ),

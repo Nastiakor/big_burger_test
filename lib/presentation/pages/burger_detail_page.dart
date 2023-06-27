@@ -6,26 +6,51 @@ import 'package:provider/provider.dart';
 class BurgerDetailPage extends StatefulWidget {
   final MenuItem menuItem;
 
-  const BurgerDetailPage({Key? key, required this.menuItem})
-      : super(key: key);
+  const BurgerDetailPage({Key? key, required this.menuItem}) : super(key: key);
 
   @override
   State<BurgerDetailPage> createState() => _BurgerDetailPageState();
 }
 
 class _BurgerDetailPageState extends State<BurgerDetailPage> {
-  int quantity = 1;
+  int quantity = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text('Burgers'),
         actions: <Widget>[
           IconButton(
-            icon: Icon(
-              Icons.shopping_cart,
-              color: Colors.white,
-            ),
+            icon: Stack(alignment: Alignment.topRight, children: [
+              Icon(
+                Icons.shopping_cart,
+                color: Colors.white,
+              ),
+              // circle containing the number if items
+              Positioned(
+                right: 0,
+                child: Container(
+                  padding: EdgeInsets.all(1),
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  constraints: BoxConstraints(
+                    minWidth: 12,
+                    minHeight: 12,
+                  ),
+                  child: Text(
+                    Provider.of<CartProvider>(context).items.length.toString(),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 8,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            ]),
             onPressed: () {
               Navigator.pushNamed(context, '/cart');
             },
@@ -85,7 +110,7 @@ class _BurgerDetailPageState extends State<BurgerDetailPage> {
                     style: Theme.of(context).iconButtonTheme.style,
                     icon: Icon(Icons.remove_circle),
                     onPressed: () {
-                      if (quantity > 1) {
+                      if (quantity >= 1) {
                         setState(() {
                           quantity--;
                         });
@@ -110,7 +135,15 @@ class _BurgerDetailPageState extends State<BurgerDetailPage> {
                 style: Theme.of(context).elevatedButtonTheme.style,
                 onPressed: () {
                   Provider.of<CartProvider>(context, listen: false)
-                      .addItem(widget.menuItem);
+                      .addItem(widget.menuItem, quantity);
+
+                  // show a SnackBar
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Done!'),
+                      duration: Duration(seconds: 1),
+                    ),
+                  );
                 },
                 child: Text(
                   'Add to Cart',
@@ -130,5 +163,5 @@ class _BurgerDetailPageState extends State<BurgerDetailPage> {
 
 double getTotalPrice(double itemsPrice, int itemsQuantity) {
   double result = itemsPrice * itemsQuantity;
-  return double.parse(result.toStringAsFixed(2));
+  return result;
 }

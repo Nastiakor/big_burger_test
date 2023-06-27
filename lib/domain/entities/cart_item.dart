@@ -4,5 +4,5 @@ class CartItem {
   final MenuItem menuItem;
   int quantity;
 
-  CartItem({required this.menuItem, this.quantity = 1});
+  CartItem({required this.menuItem, this.quantity = 0});
 }

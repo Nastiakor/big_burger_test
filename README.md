@@ -14,6 +14,14 @@ This repository contains a draft of a Flutter mobile application for Big Burger,
 
 The application is structured according to Clean Architecture principles and makes use of the Provider pattern for state management. The application has Domain, Data, Provider and Presentation layers:
 
+### App Layer
+
+- my_app.dart
+
+### Config Layer
+
+- routes.dart : This file contains the routes of the application
+
 ### Domain Layer
 
 - domain/entities/burger_menu.dart : This file contains the BurgerMenu entity which represents each burger item.
@@ -31,6 +39,10 @@ The application is structured according to Clean Architecture principles and mak
 
 - presentation/pages/cart_page.dart : This page displays the items added to the cart and the total amount.
 - presentation/pages/burger_detail_page.dart : This page displays the details of a selected burger. Users can add the item to the cart from this page.
+
+### Utils Layer
+
+- theme.dart : In this file the ThemeData is defined
 
 ## How it Works
 
