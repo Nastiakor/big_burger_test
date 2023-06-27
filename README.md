@@ -12,15 +12,15 @@ This repository contains a draft of a Flutter mobile application for Big Burger,
 
 ## Application Structure
 
-The application is structured according to Clean Architecture principles and makes use of the Provider pattern for state management. The application has Domain, Data, Provider and Presentation layers:
+The application is structured according to Clean Architecture principles and makes use of the Provider pattern for state management. The application has Domain, Data, Provider, Presentation, App, Config and Utils layers:
 
 ### App Layer
 
-- my_app.dart
+- my_app.dart.
 
 ### Config Layer
 
-- routes.dart : This file contains the routes of the application
+- routes.dart : This file contains the routes of the application.
 
 ### Domain Layer
 
@@ -39,13 +39,13 @@ The application is structured according to Clean Architecture principles and mak
 
 - presentation/pages/cart_page.dart : This page displays the items added to the cart and the total amount.
 - presentation/pages/burger_detail_page.dart : This page displays the details of a selected burger. Users can add the item to the cart from this page.
-- presentation/pages/home_page.dart
+- presentation/pages/home_page.dart : Homepage with the list of articles 
 - presentation/widget/cart_icon_button.dart
 - presentation/widget/custom_app_bar.dart
 
 ### Utils Layer
 
-- theme.dart : In this file the ThemeData is defined
+- theme.dart : In this file the ThemeData is defined.
 
 ## How it Works
 
@@ -63,7 +63,11 @@ In the cart, the total amount is calculated and displayed.
 
 ### Default image when an image fails to load 
 
-<img src="https://github.com/Nastiakor/big_burger_test/assets/114946987/b786838b-4550-43a5-a42f-c08ef547a9d7" width="200"> 
+<img src="https://github.com/Nastiakor/big_burger_test/assets/114946987/2cfda2e0-154b-4f46-8ba3-1b0bcd45d4ee" width="200"> 
+
+### Image when the cart is empty
+
+<img src="[https://github.com/Nastiakor/big_burger_test/assets/114946987/2cfda2e0-154b-4f46-8ba3-1b0bcd45d4ee](https://github.com/Nastiakor/big_burger_test/assets/114946987/44a4a003-4ef6-4b61-90fe-026b6ccd893f)https://github.com/Nastiakor/big_burger_test/assets/114946987/44a4a003-4ef6-4b61-90fe-026b6ccd893f" width="200"> 
 
 
 
