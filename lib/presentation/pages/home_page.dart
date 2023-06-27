@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:useradgents_exercise/data/api/service/burger_api_service.dart';
 import 'package:useradgents_exercise/domain/entities/menu_item.dart';
+import 'package:useradgents_exercise/presentation/widget/custom_app_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -22,11 +23,7 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Your favourite burger',
-        ),
-      ),
+      appBar: CustomAppBar(title: 'Your Favourite Burger', showCartIcon: true, showImage: true, isOnHomePage: true),
       body: FutureBuilder<List<MenuItem>>(
         future: futureBurgerMenu,
         builder: (context, snapshot) {

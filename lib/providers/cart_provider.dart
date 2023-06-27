@@ -26,4 +26,8 @@ class CartProvider with ChangeNotifier {
     return _items.fold(
         0, (sum, item) => sum + (item.quantity * item.menuItem.priceInEuros));
   }
+
+  int get totalItemsCount {
+    return _items.fold(0, (sum, item) => sum + item.quantity);
+  }
 }

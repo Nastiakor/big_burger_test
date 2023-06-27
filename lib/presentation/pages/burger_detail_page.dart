@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:useradgents_exercise/domain/entities/menu_item.dart';
 import 'package:useradgents_exercise/providers/cart_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:useradgents_exercise/presentation/widget/cart_icon_button.dart';
 
 class BurgerDetailPage extends StatefulWidget {
   final MenuItem menuItem;
@@ -21,36 +22,7 @@ class _BurgerDetailPageState extends State<BurgerDetailPage> {
       appBar: AppBar(
         title: Text('Burgers'),
         actions: <Widget>[
-          IconButton(
-            icon: Stack(alignment: Alignment.topRight, children: [
-              Icon(
-                Icons.shopping_cart,
-                color: Colors.white,
-              ),
-              // circle containing the number if items
-              Positioned(
-                right: 0,
-                child: Container(
-                  padding: EdgeInsets.all(1),
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  constraints: BoxConstraints(
-                    minWidth: 12,
-                    minHeight: 12,
-                  ),
-                  child: Text(
-                    Provider.of<CartProvider>(context).items.length.toString(),
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 8,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
-            ]),
+          CartIconButton(
             onPressed: () {
               Navigator.pushNamed(context, '/cart');
             },
