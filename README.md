@@ -24,7 +24,7 @@ The application is structured according to Clean Architecture principles and mak
 
 ### Domain Layer
 
-- domain/entities/menu_item.dart : This file contains the BurgerMenu entity which represents each burger item.
+- domain/entities/menu_item.dart : This file contains the MenuItem entity which represents each burger item.
 - domain/entities/cart_item.dart : This file contains the CartItem entity which represents each item in the cart.
 
 ### Data Layer
