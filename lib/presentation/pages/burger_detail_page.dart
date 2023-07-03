@@ -107,14 +107,8 @@ class _BurgerDetailPageState extends State<BurgerDetailPage> {
                 style: Theme.of(context).elevatedButtonTheme.style,
                 onPressed: () {
                   Provider.of<CartProvider>(context, listen: false)
-                      .addItem(widget.menuItem, quantity);
-                  // show a SnackBar when article added
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Done!'),
-                      duration: Duration(seconds: 1),
-                    ),
-                  );
+                      .addItem(widget.menuItem, quantity, context);
+                  //
                 },
                 child: Text(
                   'Add to Cart',
