@@ -65,7 +65,7 @@ In the cart, the total amount is calculated and displayed.
 
 <img src="https://github.com/Nastiakor/big_burger_test/assets/114946987/2cfda2e0-154b-4f46-8ba3-1b0bcd45d4ee" width="200"> 
 
-### Image when the cart is empty
+### Image displayed when the cart is empty
 
 <img src="https://github.com/Nastiakor/big_burger_test/assets/114946987/5c0479cb-a158-43a4-a289-30fec29fc271" width="200"> 
 
